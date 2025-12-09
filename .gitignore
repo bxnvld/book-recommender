@@ -1,0 +1,18 @@
+venv/
+venvBooks/
+env/
+__pycache__/
+*.pyc
+.DS_Store
+logs/
+
+# ІГНОРУЄМО ВЕЛИКІ ОРИГІНАЛИ (Це врятує ваш деплой)
+data/book_embeddings.npy
+data/books_meta.json
+data/books_prepared.json
+data/books_raw_openlibrary.json
+data/books_openlibrary_full.json
+
+# ДОЗВОЛЯЄМО ТІЛЬКИ НАШІ НОВІ АРХІВИ
+!data/z_emb.zip
+!data/z_meta.zip

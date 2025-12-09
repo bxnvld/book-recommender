@@ -1,0 +1,6 @@
+Flask==3.0.0
+gunicorn
+scikit-learn==1.7.2
+numpy
+tensorflow-cpu
+tensorflow-hub

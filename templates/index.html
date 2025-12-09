@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Book Recommender</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <style>
+        .htmx-indicator{opacity:0;transition: opacity 200ms ease-in;}
+        .htmx-request .htmx-indicator{opacity:1}
+        .htmx-request.htmx-indicator{opacity:1}
+        .animate-fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans min-h-screen p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
+            Book Matcher 🧠
+        </h1>
+
+        <div class="mb-8 relative">
+            <input type="text" 
+                   name="q"
+                   placeholder="Type book name (e.g. 'Harry Potter')..." 
+                   class="w-full p-4 rounded-xl bg-slate-800 border border-slate-700 text-xl focus:outline-none focus:border-blue-500 transition shadow-lg"
+                   hx-get="/search" 
+                   hx-trigger="keyup changed delay:500ms, search" 
+                   hx-target="#search-results"
+                   hx-indicator="#loading">
+            
+            <div id="loading" class="htmx-indicator absolute right-4 top-4 text-blue-400">
+                Searching...
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h2 class="text-xl font-semibold mb-4 text-slate-400">Search Results</h2>
+                <div id="search-results" class="space-y-2">
+                    <p class="text-slate-600 italic">Start typing to find books...</p>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="text-xl font-semibold mb-4 text-slate-400">AI Recommendations</h2>
+                <div id="recommendations-container" class="space-y-4">
+                    <p class="text-slate-600 italic">Select a book to see similar ones.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
